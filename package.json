@@ -1,0 +1,21 @@
+{
+  "name": "trello-vanilla-js",
+  "version": "1.0.0",
+  "description": "Vanilla JS로 Trello 구현하기",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyunjoogo/trello-vanilla-JS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/hyunjoogo/trello-vanilla-JS#readme",
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
