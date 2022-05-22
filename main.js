@@ -6,7 +6,9 @@ let dragItem = null;
 function dragStart() {
   console.log('drag started');
   dragItem = this; // 여기서 this는 이벤트 대상
-  setTimeout(() => this.className = 'invisible', 0);
+  setTimeout(() => {
+    this.className = 'invisible';
+  }, 0);
 }
 
 function dragEnd() {
