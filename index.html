@@ -24,18 +24,11 @@
     </div>
     <button class="card_add_btn">+ ADD NEW CARD</button>
   </section>
-  <section class="list inProgress">
-    <h1 class="list_title">In Progress</h1>
-    <div class="list_contents">
-      <p class="card_count">? Cards</p>
-
-    </div>
-    <button class="card_add_btn">+ ADD NEW CARD</button>
-  </section>
-
-
 </section>
-<button class="new_list_btn">+ ADD NEW LIST</button>
+<form class="new_list_form" onsubmit="return false;">
+  <input class="new_list_input" type="text" min="1" required>
+  <button class="new_list_btn" type="submit">+ ADD NEW LIST</button>
+</form>
 <script type="module" src="./main.js"></script>
 </body>
 </html>

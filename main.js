@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/extensions
 import makeNewList from './makeList.js';
 
 const cards = document.querySelectorAll('.card');
@@ -50,4 +51,16 @@ lists.forEach((list) => {
   list.addEventListener('drop', dragDrop);
 });
 
-document.querySelector('.new_list_btn').addEventListener('click', makeNewList);
+function addNewList() {
+  const input = document.querySelector('.new_list_input');
+  const listName = input.value;
+  // if (listName === '') {
+  //   input.focus();
+  //   return alert('리스트의 이름을 입력해주세요.');
+  // }
+  makeNewList(listName);
+  input.value = '';
+}
+
+document.querySelector('.new_list_form')
+  .addEventListener('submit', () => addNewList());
