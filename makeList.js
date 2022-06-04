@@ -1,10 +1,13 @@
 /**
  * 기존 템플릿의 새로운 리스트 생성
+ * 고유 ID = 생성당시의 타임스템프
  * @param listName 리스트 이름
  */
 function makeNewList(listName) {
+  const listId = new Date().getTime();
+
   const listWrapper = document.createElement('section');
-  listWrapper.className = 'list list-name';
+  listWrapper.className = `list ${listId}`;
 
   const listTitle = document.createElement('h1');
   listTitle.className = 'list_title';
