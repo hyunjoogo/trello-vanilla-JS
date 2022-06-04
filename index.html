@@ -9,11 +9,12 @@
   <title>트렐로-바닐라JS</title>
 </head>
 <body>
+
 <section id="trello">
-  <div class="list allTask">
+  <section class="list allTask">
     <h1 class="list_title">All Task</h1>
     <div class="list_contents">
-      <div class="card_count">2 Cards</div>
+      <p class="card_count">2 Cards</p>
       <div draggable="true" class="card">One</div>
       <div draggable="true" class="card">Two</div>
       <div draggable="true" class="card">Three</div>
@@ -21,18 +22,20 @@
       <div draggable="true" class="card">Five</div>
       <div draggable="true" class="card">Six</div>
     </div>
-    <div class="card_add_btn">+ ADD NEW CARD</div>
-  </div>
-  <div class="list inProgress">
+    <button class="card_add_btn">+ ADD NEW CARD</button>
+  </section>
+  <section class="list inProgress">
     <h1 class="list_title">In Progress</h1>
     <div class="list_contents">
+      <p class="card_count">? Cards</p>
 
     </div>
-    <div class="card_add_btn">+ ADD NEW CARD</div>
-  </div>
+    <button class="card_add_btn">+ ADD NEW CARD</button>
+  </section>
 
 
 </section>
+<button class="new_list_btn">+ ADD NEW LIST</button>
 <script type="module" src="./main.js"></script>
 </body>
 </html>

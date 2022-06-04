@@ -1,3 +1,5 @@
+import makeNewList from './makeList.js';
+
 const cards = document.querySelectorAll('.card');
 const lists = document.querySelectorAll('.list');
 
@@ -5,7 +7,7 @@ let dragItem = null;
 
 function dragStart() {
   console.log('drag started');
-  dragItem = this; // 여기서 this는 이벤트 대상
+  dragItem = this;
   setTimeout(() => {
     this.className = 'invisible';
   }, 0);
@@ -47,3 +49,5 @@ lists.forEach((list) => {
   list.addEventListener('dragleave', dragLeave);
   list.addEventListener('drop', dragDrop);
 });
+
+document.querySelector('.new_list_btn').addEventListener('click', makeNewList);
