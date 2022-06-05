@@ -10,11 +10,14 @@ const lists = document.querySelectorAll('.list');
 
 let dragItem = null;
 let dragItemBelongedListIndex = '';
+let dragItemData = null;
 
 function dragStart() {
   console.log('drag started');
   dragItem = this;
   dragItemBelongedListIndex = this.parentNode.parentNode.dataset.index;
+  const contentId = dragItem.dataset.content_id;
+  dragItemData = dummyData[dragItemBelongedListIndex].contents.filter((value) => value.contentId === contentId);
   setTimeout(() => {
     this.classList.toggle('invisible');
   }, 0);
@@ -22,20 +25,19 @@ function dragStart() {
 
 function dragEnd() {
   console.log('drag Ended');
-  console.log('내가 누구인지', dragItem);
-  const belongedListId = dragItem.parentNode.parentNode;
+  // console.log('내가 누구인지', dragItem);
   const contentId = dragItem.dataset.content_id;
-  console.log(contentId);
-  console.log('Card가 속한 listId', belongedListId);
   dragItem.classList.toggle('invisible');
 
   // 기존 list에서 빼기
-  let { contents } = dummyData[dragItemBelongedListIndex];
-  const newContents = contents.filter((value) => value.contentId !== contentId);
-  contents = newContents;
-  console.log(contents);
+  const fromList = dummyData[dragItemBelongedListIndex].contents;
+  const newContents = fromList.filter((value) => value.contentId !== contentId);
+  dummyData[dragItemBelongedListIndex].contents = newContents;
   dragItem = null;
   dragItemBelongedListIndex = '';
+  dragItemData = null;
+
+  console.log(dummyData);
 }
 
 function dragOver(event) {
@@ -51,28 +53,10 @@ function dragLeave() {
   console.log('drag left(leave)');
 }
 
-function dragDrop(e) {
+function dragDrop() {
   console.log('drag dropped');
-  // 이벤트 리스너에 화살표함수를 쓰면 this가 undefined가 된다.
-  // 안쓰면 this는 선택한 요소가 됨
-  console.log('속한 listId', e.target.parentNode.parentNode.classList[1]);
-  // console.log(e);
-
-  // 자료를 옮기는 것
-  // 옮길 자료가 어디에 있었는지 => 그래야지 그 자료에서 빼지
-  // 나는 dummyData[n].contents[m]
-
-  // 어디에 옮길지 = > 그래야지 거기에 넣지
-  // dummyData.forEach((v) => {
-  //   if (v.listId === this.classList[1]) {
-  //     v.contents.push(this);
-  //   }
-  // });
-}
-
-function dragDropThis() {
-  console.log('drag dropped');
-  console.log(this);
+  const contentId = dragItem.dataset.content_id;
+  dummyData[this.dataset.index].contents.push(...dragItemData);
   const listContents = this.querySelector('.list_contents');
   listContents.append(dragItem);
 }
@@ -86,8 +70,8 @@ lists.forEach((list) => {
   list.addEventListener('dragover', dragOver);
   list.addEventListener('dragenter', dragEnter);
   list.addEventListener('dragleave', dragLeave);
-  list.addEventListener('drop', (e) => dragDrop(e));
-  list.addEventListener('drop', dragDropThis);
+  list.addEventListener('drop', dragDrop);
+  console.log(list);
 });
 
 document.querySelectorAll('.card_add_btn')
